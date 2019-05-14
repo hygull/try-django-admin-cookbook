@@ -8,7 +8,7 @@ class Category(models.Model):
 
 	def __str__(self):
 		return "Category - {0}".format(self.pk)
-		
+
 
 class Post(models.Model):
 	title = models.CharField(max_length=50, default='', help_text="Post's title")
@@ -17,7 +17,7 @@ class Post(models.Model):
 	created_at = models.DateTimeField(auto_now_add=True, help_text="Post created at")
 	updated_at = models.DateTimeField(auto_now=True, help_text="Post last updated at")
 	category = models.ForeignKey(Category, on_delete=models.CASCADE, help_text="Post belongs to")
-	active = models.BooleanField(default=True)
+	active = models.BooleanField(default=True, help_text="Active status")
 
 	def __str__(self):
 		return "Post - {0} by {1}".format(self.pk, self.posted_by.first_name)

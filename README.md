@@ -58,6 +58,65 @@ urlpatterns = [
 ]
 ```
 
++ Now create 2 apps named **users** and **posts**.
+
++ Define the following 2 models in **users/models.py**.
+
+```python
+
+class Address(models.Model):
+    city = models.CharField(max_length=50, default='', help_text="User's village name")
+    village = models.CharField(max_length=50, default='', help_text="User's city name")
+    district = models.CharField(max_length=50, null=True, help_text="User's district name")
+    state = models.CharField(max_length=50, blank=True, help_text="User's state name")
+
+    def __str__(self):
+        return "Address - {0}".format(self.pk)
+
+
+class User(models.Model):
+    first_name = models.CharField(max_length=50, null=False, blank=False, help_text="User's fisrt name")
+    last_name = models.CharField(max_length=50, null=False, blank=False, help_text="User's last name")
+    date_of_birth = models.DateField(help_text="User's date of birth")
+    address = models.ForeignKey(Address, on_delete=models.CASCADE, help_text="User's address")
+    created_at = models.DateTimeField(auto_now_add=True, help_text="User created at")
+    updated_at = models.DateTimeField(auto_now=True, help_text="User details last updated at")
+    active = models.BooleanField(default=True, help_text="Active status")
+
+    def __str__(self):
+        return "User {0}".format(self.pk)
+
+```
+
++ Now, define the following 2 models(including 1 import statement) in **posts/models.py**.
+
+```python
+from users.models import User
+
+class Category(models.Model):
+    name = models.CharField(max_length=50, help_text="Name of category")
+    description = models.TextField(default='', help_text="Description of category")
+
+    def __str__(self):
+        return "Category - {0}".format(self.pk)
+
+
+class Post(models.Model):
+    title = models.CharField(max_length=50, default='', help_text="Post's title")
+    description = models.TextField(help_text="Post's description")
+    posted_by = models.ForeignKey(User, on_delete=models.CASCADE, help_text="Posted by (Who posted this post)")
+    created_at = models.DateTimeField(auto_now_add=True, help_text="Post created at")
+    updated_at = models.DateTimeField(auto_now=True, help_text="Post last updated at")
+    category = models.ForeignKey(Category, on_delete=models.CASCADE, help_text="Post belongs to")
+    active = models.BooleanField(default=True, help_text="Active status")
+
+    def __str__(self):
+        return "Post - {0} by {1}".format(self.pk, self.posted_by.first_name)
+
+```
+
++ Now, **makemigrations** & **migrate**.
+
 
 
 # References 
