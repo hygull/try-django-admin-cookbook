@@ -183,6 +183,22 @@ class CategoryAdmin(admin.ModelAdmin):
 
 + Runserver `python manage.py runserver` and check. Now you can see your apps in admin interface.
 
++ You will be seeing **Categorys** in the page, so just update the Category model by adding Meta class. And it will chage **Categorys** to **Categories**.
+
+```python
+class Category(models.Model):
+    name = models.CharField(max_length=50, help_text="Name of category")
+    description = models.TextField(default='', help_text="Description of category")
+
+    def __str__(self):
+        return "Category - {0}".format(self.pk)
+
+    class Meta:
+        verbose_name_plural = "Categories"
+```
+
+
+
 # References 
 
 + https://books.agiliq.com/en/latest/

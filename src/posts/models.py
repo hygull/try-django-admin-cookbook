@@ -9,6 +9,9 @@ class Category(models.Model):
 	def __str__(self):
 		return "Category - {0}".format(self.pk)
 
+	class Meta:
+		verbose_name_plural = "Categories"
+
 
 class Post(models.Model):
 	title = models.CharField(max_length=50, default='', help_text="Post's title")
