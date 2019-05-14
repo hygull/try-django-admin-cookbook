@@ -2,7 +2,7 @@
 
 A Django project which deals with customizing Django Admin Interface. It is impressed from https://books.agiliq.com/projects/django-admin-cookbook/en/latest/ and uses similar/different kind of examples. 
 
-> To read colourful documentation visit [https://hygull.github.io/try-django-admin-cookbook/](https://hygull.github.io/try-django-admin-cookbook/)
+> To read colourful documentation visit [https://hygull.github.io/try-django-admin-cookbook/](https://hygull.github.io/try-django-admin-cookbook/). The purpose of this project is to learn by making mistakes so don't think about models structure first time as later it has been enhanced. Please focus on how it flows and changes as we advance.
 
 + First have a look at this docs first.
 
@@ -183,7 +183,7 @@ class CategoryAdmin(admin.ModelAdmin):
 
 + Runserver `python manage.py runserver` and check. Now you can see your apps in admin interface.
 
-+ You will be seeing **Categorys** in the page, so just update the Category model by adding Meta class. And it will chage **Categorys** to **Categories**.
++ You will be seeing **Categorys** in the page, so just update the Category model by adding Meta class. And it will change **Categorys** to **Categories**.
 
 ```python
 class Category(models.Model):
