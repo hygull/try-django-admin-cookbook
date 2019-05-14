@@ -25,9 +25,9 @@ admin.site.site_title = "Customizing Admin Interface"
 admin.site.index_title = "Apps and related models"
 ```
 
-so that will look like below 
+so that it will look like below.
 
-> **Note:** I am not going to paste the whole code next time, this is to make sure my point clear to you readers only first time so stay active, stay focused.
+> **Note:** I am not going to paste the whole code next time, this is to make sure my point is clear to you readers only first time. So stay active, stay focused.
 
 ```python
 """cookbook URL Configuration
