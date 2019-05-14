@@ -57,3 +57,11 @@ urlpatterns = [
     path('admin/', admin.site.urls),
 ]
 ```
+
+
+
+# References 
+
++ https://books.agiliq.com/en/latest/
+
++ [https://books.agiliq.com/projects/django-admin-cookbook/en/latest/](https://books.agiliq.com/projects/django-admin-cookbook/en/latest/)
