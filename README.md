@@ -2,7 +2,11 @@
 
 A Django project which deals with customizing Django Admin Interface. It is impressed from https://books.agiliq.com/projects/django-admin-cookbook/en/latest/ and uses similar/different kind of examples. 
 
-> To read colourful documentation visit [https://hygull.github.io/try-django-admin-cookbook/](https://hygull.github.io/try-django-admin-cookbook/). The purpose of this project is to learn by making mistakes so don't think about models structure first time as later it has been enhanced. Please focus on how it flows and changes as we advance.
+> To read colourful documentation visit [https://hygull.github.io/try-django-admin-cookbook/](https://hygull.github.io/try-django-admin-cookbook/). 
+>
+>The purpose of this project is to learn by making mistakes so don't think about model's structure first time as later it has been enhanced. 
+>
+>Please focus on how it flows and changes as we advance.
 
 + First have a look at this docs first.
 
@@ -15,6 +19,8 @@ A Django project which deals with customizing Django Admin Interface. It is impr
 	+ [4.md](./docs/command_history/4.md)
 
 	+ [5.md](./docs/command_history/5.md)
+
+    + [6.md](./docs/command_history/6.md)
 
 + In `cookbook/urls.py`, add the following lines just after import statements
 
@@ -204,3 +210,11 @@ class Category(models.Model):
 + https://books.agiliq.com/en/latest/
 
 + [https://books.agiliq.com/projects/django-admin-cookbook/en/latest/](https://books.agiliq.com/projects/django-admin-cookbook/en/latest/)
+
++ [Change site header, site title, index title](https://books.agiliq.com/projects/django-admin-cookbook/en/latest/change_text.html)
+
++ [Set plural text for model](https://books.agiliq.com/projects/django-admin-cookbook/en/latest/plural_text.html)
+
++ [Create 2 independent admin sites](https://books.agiliq.com/projects/django-admin-cookbook/en/latest/two_admin.html)
+
++
