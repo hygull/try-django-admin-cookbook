@@ -104,7 +104,7 @@ class Category(models.Model):
 class Post(models.Model):
     title = models.CharField(max_length=50, default='', help_text="Post's title")
     description = models.TextField(help_text="Post's description")
-    posted_by = models.ForeignKey(User, on_delete=models.CASCADE, help_text="Posted by (Who posted this post)")
+    posted_by = models.ForeignKey(User, on_delete=models.CASCADE, help_text="Who posted?")
     created_at = models.DateTimeField(auto_now_add=True, help_text="Post created at")
     updated_at = models.DateTimeField(auto_now=True, help_text="Post last updated at")
     category = models.ForeignKey(Category, on_delete=models.CASCADE, help_text="Post belongs to")
@@ -117,7 +117,71 @@ class Post(models.Model):
 
 + Now, **makemigrations** & **migrate**.
 
++ Add following to **users/admin.py**.
 
+```python
+from users.models import User, Address
+
+@admin.register(User)
+class UserAdmin(admin.ModelAdmin):
+    list_display = [
+        "pk",
+        "first_name",
+        "last_name",
+        "date_of_birth",
+        "created_at",
+        "updated_at",
+        "active"
+    ]
+    search_fields = [
+        "pk",
+        "first_name",
+        "last_name"
+    ]
+
+@admin.register(Address)
+class AddressAdmin(admin.ModelAdmin):
+    search_fields = [
+        "pk",
+        "city",
+        "village",
+        "district",
+        "state"
+    ]
+```
+
++ Now add following to **posts/admin.py**.
+
+```python
+from posts.models import Post, Category
+
+@admin.register(Post)
+class PostAdmin(admin.ModelAdmin):
+    list_display = [
+        "pk",
+        "title",
+        "active",
+        "posted_by",
+        "created_at",
+        "updated_at"
+    ]
+
+    search_fields = [
+        "pk",
+        "title",
+        "active"
+    ]
+
+
+@admin.register(Category)
+class CategoryAdmin(admin.ModelAdmin):
+    search_fields = [
+        "pk",
+        "name"
+    ]
+```
+
++ Runserver `python manage.py runserver` and check. Now you can see your apps in admin interface.
 
 # References 
 
