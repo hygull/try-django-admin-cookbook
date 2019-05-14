@@ -1,4 +1,4 @@
-"""cookbook URL Configuration
+"""posts URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/2.2/topics/http/urls/
@@ -15,11 +15,6 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-
-# Admin Interface: change site-header, site-title & index-title 
-admin.site.site_header = "Admin Interface Cookbook"
-admin.site.site_title = "Customizing Admin Interface"
-admin.site.index_title = "Apps and related models"
 
 urlpatterns = [
     path('admin/', admin.site.urls),
