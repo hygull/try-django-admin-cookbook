@@ -27,3 +27,13 @@ class AddressAdmin(admin.ModelAdmin):
 		"district",
 		"state"
 	]
+
+# *---* Separate Admin site *---*
+class UserAdminSite(admin.AdminSite):
+	site_header = "User Admin Site"
+	site_title = "Users"
+	index_title = "Users list"
+
+users_admin_site = UserAdminSite(name="users-admin-site")
+users_admin_site.register(User)
+users_admin_site.register(Address)

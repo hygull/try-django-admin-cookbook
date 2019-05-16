@@ -25,3 +25,13 @@ class CategoryAdmin(admin.ModelAdmin):
 		"pk",
 		"name"
 	]
+
+# *---* Separate Admin site *---*
+class PostAdminSite(admin.AdminSite):
+	site_header = "Post Admin Site"
+	site_title = "Posts"
+	index_title = "Posts list"
+
+posts_admin_site = PostAdminSite(name="posts-admin-site")
+posts_admin_site.register(Post)
+posts_admin_site.register(Category)

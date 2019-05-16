@@ -11,7 +11,7 @@ class Address(models.Model):
 
 
 class User(models.Model):
-	first_name = models.CharField(max_length=50, null=False, blank=False, help_text="User's fisrt name")
+	first_name = models.CharField(max_length=50, null=False, blank=False, help_text="User's first name")
 	last_name = models.CharField(max_length=50, null=False, blank=False, help_text="User's last name")
 	date_of_birth = models.DateField(help_text="User's date of birth")
 	address = models.ForeignKey(Address, on_delete=models.CASCADE, help_text="User's address")
