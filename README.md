@@ -22,6 +22,8 @@ A Django project which deals with customizing Django Admin Interface. It is impr
 
     + [6.md](./docs/command_history/6.md)
 
+## Defining models, applicaton registry, changing default site texts
+
 + In `cookbook/urls.py`, add the following lines just after import statements
 
 ```python
@@ -203,7 +205,58 @@ class Category(models.Model):
         verbose_name_plural = "Categories"
 ```
 
+### Two separate admin sites (for users & posts)
 
++ Append the following code in **users/admin.py** (very bottom).
+
+```python
+# *---* Separate Admin site *---*
+class UserAdminSite(admin.AdminSite):
+    site_header = "User Admin Site"
+    site_title = "Users"
+    index_title = "Users list"
+
+users_admin_site = UserAdminSite(name="users-admin-site")
+users_admin_site.register(User)
+users_admin_site.register(Address)
+
+```
+
++ Now, append the following code in **posts/admin.py** (very bottom).
+
+```python
+# *---* Separate Admin site *---*
+class PostAdminSite(admin.AdminSite):
+    site_header = "Post Admin Site"
+    site_title = "Posts"
+    index_title = "Posts list"
+
+posts_admin_site = PostAdminSite(name="posts-admin-site")
+posts_admin_site.register(Post)
+posts_admin_site.register(Category)
+
+```
+
++ Open **cookbook/urls.py**, add first 2 import at very top 
+
+```python
+from users.admin import users_admin_site
+from posts.admin import posts_admin_site
+```
+
++ And then only change **urlpatterns** to
+
+```python
+urlpatterns = [
+    path('admin/', admin.site.urls),
+
+    # After defining the following 2 patterns, you won't be able to access 
+    # default home(/) page. Need to design our own custom home(/) page
+    path('users-admin/', users_admin_site.urls),
+    path('posts-admin/', posts_admin_site.urls),
+]
+
+```
 
 # References 
 
@@ -217,4 +270,3 @@ class Category(models.Model):
 
 + [Create 2 independent admin sites](https://books.agiliq.com/projects/django-admin-cookbook/en/latest/two_admin.html)
 
-+
