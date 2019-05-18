@@ -17,11 +17,16 @@ from django.contrib import admin
 from django.urls import path
 from users.admin import users_admin_site
 from posts.admin import posts_admin_site
+from django.contrib.auth.models import User, Group
 
 # Admin Interface: change site-header, site-title & index-title 
 admin.site.site_header = "Admin Interface Cookbook"
 admin.site.site_title = "Customizing Admin Interface"
 admin.site.index_title = "Apps and related models"
+
+# Hide User & Group from admin (/admin/)
+admin.site.unregister(User)
+admin.site.unregister(Group)
 
 urlpatterns = [
     path('admin/', admin.site.urls),

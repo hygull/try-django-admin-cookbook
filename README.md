@@ -258,6 +258,21 @@ urlpatterns = [
 
 ```
 
++ Now, it's time to hide **User** & **Group** (from `django.contrib.auth` app) from admin interface. Add the below import statement after the import statements that we added in previous step.
+
+```python
+from django.contrib.auth.models import User, Group
+```
+
++ Then add the following statements just before **urlpatterns** list.
+
+```python
+# Hide User & Group from admin (/admin/)
+admin.site.unregister(User)
+admin.site.unregister(Group)
+```
+
+
 # References 
 
 + https://books.agiliq.com/en/latest/
